@@ -50,6 +50,10 @@ def load_user(user_id):
 def index():
     return render_template('index.html')
 
+@app.route("/about")
+def about():
+    return render_template('index.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -94,10 +98,30 @@ def heart():
 def liver():
     return render_template("liver.html")
 
-@app.route("/diabetes")
+@app.route("/disblog")
+@login_required
+def disblog():
+    return render_template("disblog.html")
+
+@app.route("/diabetesMorF")
+@login_required
+def diabetesMorF():
+    
+    return render_template("diabetesMorF.html")
+
+@app.route("/diabetes", methods=['POST'])
 @login_required
 def diabetes():
-    return render_template("diabetes.html")
+    gender = [x for x in request.form.values()]
+    print(gender)
+    # form = MyForm(request.POST)
+    # print(form.data['gender'])
+    if gender[0]== 'M':
+        return render_template("diabetesM.html")
+    else: 
+        return render_template("diabetesF.html")
+
+
 
 ###########################################################################
 

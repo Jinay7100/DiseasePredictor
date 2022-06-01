@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://kit.fontawesome.com/c0dee1e206.js" crossorigin="anonymous"></script>
 	<title>Heart Disease Prediction</title>
 </head>
 <style>
@@ -23,6 +24,7 @@ form {
 	margin-top: 3%;
 	margin-left: 29%;
 	margin-right: 21%;
+ 
 
 }
 
@@ -32,6 +34,7 @@ form fieldset{
 	border-style: solid;
     border-color: #5a5a5a;
 	background-color: #fff;
+
 }
 
 fieldset h1 {
@@ -49,12 +52,15 @@ fieldset label {
 	margin-right: 40px;
 	padding: 23px;
 	font-size: 20px;
-	display: inline-block;
-    width  : 240px;
+  display: inline-block;
+  width: 240px;
+	
 }
 fieldset input{
 	padding:8px;
-	color: #938c8c
+	color: #938c8c;
+
+  
 }
 fieldset input:focus{
 	color: #000;
@@ -109,30 +115,35 @@ fieldset button
 	border-color: #257a7a;
 	box-shadow: 6px 13px 13px 0px black;
 	background-color: #ebfffa;
+  
+}
+i
+{
+  padding-left: 10px;
 }
 </style>
 <body>
 
 	<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#"><b>Disease Predictor</b></a>
+      <a class="navbar-brand" href="/dashboard"><b>Disease Predictor</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item ">
               <a class="nav-link" href="/dashboard">Get Started</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link disabled" href="/disblog">Disease Blog</a>
+              <a class="nav-link" href="/disblog">Disease Blog</a>
           </li>
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Diseases
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/diabetes">Diabetes</a>
+                <a class="dropdown-item" href="/diabetesMorF">Diabetes</a>
                 <a class="dropdown-item" href="/heart">Heart Disease</a>
                 
                 <a class="dropdown-item" href="/liver">Liver Disease</a>
@@ -156,57 +167,58 @@ fieldset button
             <div class="tabcontent" id="new">
 
                 <div class="form-group">
-                    <label for="age">Age in Years</label>
-                    <input class="form-control" type="number" name="age" placeholder="eg. 34" required="required"/>
+                  <left>
+                    <label for="age" style="text-align: left;">Age in Years<i class="fa-solid fa-circle-info"  title="Enter your Age"></i></label></left>
+                    <input class="form-control"  type="number" name="age" placeholder="eg. 34" required="required"/>
                  </div>
-                 <div class="form-group">
-                  <label for="Gender">Gender</label>
+                 <div class="form-group"><left>
+                  <label for="Gender">Gender<i class="fa-solid fa-circle-info" title="Enter your Gender"></i></label></left>
                   <input class="form-control" type="number" name="Gender"  placeholder="If male enter 1 else 0" required="required"/>
                 </div>
                 <div class="form-group">
-                  <label for="CP">CP</label>
+                  <label for="CP">CP<i class="fa-solid fa-circle-info" title="CP 1-4 Refer Blog"></i></label>
                   <input class="form-control" type="number" name="CP"  placeholder="CP" required="required"/>
                 </div>
                   <div class="form-group">
-                    <label for="trestbps">Trest Bps</label>
+                    <label for="trestbps">TrestBps<i class="fa-solid fa-circle-info" title="TrestBps in mmHg"></i></label>
                     <input class="form-control" type="number" name="trestbps" placeholder="Trestbps" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="chol">Cholesterol</label>
+                    <label for="chol">Cholesterol<i class="fa-solid fa-circle-info" title="Chol 150-199 mg/dl"></i></label>
                     <input class="form-control" type="number" name="chol"  placeholder="Chol" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="fbs">FBS</label>
+                    <label for="fbs">FBS<i class="fa-solid fa-circle-info" title="FBS 99 mg/dl"></i></label>
                     <input class="form-control" type="number" name="FBS"  placeholder="FBS" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="restecg">RESTECG</label>
+                    <label for="restecg">RESTECG<i class="fa-solid fa-circle-info" title="RESTECG 0-2 Refer Blog"></i></label>
                     <input class="form-control" type="number" name="restecg"  placeholder="Restecg" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="thalach">Thalach</label>
+                    <label for="thalach">Thalach<i class="fa-solid fa-circle-info" title="Thalach Max Heart Rate"></i></label>
                     <input class="form-control" type="number" name="thalach"  placeholder="Thalach" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="exang">EXANG</label>
+                    <label for="exang">EXANG<i class="fa-solid fa-circle-info" title="EXANG 0/1 Refer Blog"></i></label>
                     <input class="form-control" type="number" name="EXANG"  placeholder="EXANG" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="oldpeak">Old Peak</label>
+                    <label for="oldpeak">Old Peak<i class="fa-solid fa-circle-info" title="Old Peak 0-6"></i></label>
                     <input class="form-control" type="number" step="0.1" name="oldpeak"  placeholder="Oldpeak" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="slope">SLOPE</label>
+                    <label for="slope">SLOPE<i class="fa-solid fa-circle-info" title="SLOPE 1-3 Refer Blog"></i></label>
                     <input class="form-control" type="number" name="SLOPE" placeholder="SLOPE" required="required"/>
                   </div>
                   
                   <div class="form-group">
-                    <label for="CA">CA</label>
+                    <label for="CA">CA<i class="fa-solid fa-circle-info" title="CA 3/6/7 Refer Blog"></i></label>
                     <input class="form-control" type="number" name="CA"  placeholder="CA" required="required"/>
                   </div>
                  
                   <div class="form-group">
-                    <label for="HAL">HAL</label>
+                    <label for="HAL">HAL<i class="fa-solid fa-circle-info" title="HAL 0/1 Refer Blog"></i></label>
                     <input class="form-control" type="number" name="HAL"  placeholder="HAL" required="required"/>
                   </div>
                  

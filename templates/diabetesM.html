@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://kit.fontawesome.com/c0dee1e206.js" crossorigin="anonymous"></script>
 	<title>Diabetes Prediction</title>
 </head>
 <style>
@@ -110,29 +111,34 @@ fieldset button
 	box-shadow: 6px 13px 13px 0px black;
 	background-color: #ebfffa;
 }
+i
+{
+  padding-left: 10px;
+}
+
 </style>
 <body>
 
 	<header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#"><b>Disease Predictor</b></a>
+            <a class="navbar-brand" href="/dashboard"><b>Disease Predictor</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="/dashboard">Get Started</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="/disblog">Disease Blog</a>
+                    <a class="nav-link" href="/disblog">Disease Blog</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Diseases
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="/diabetes">Diabetes</a>
+                      <a class="dropdown-item" href="/diabetesMorF">Diabetes</a>
                       <a class="dropdown-item" href="/heart">Heart Disease</a>
                       
                       <a class="dropdown-item" href="/liver">Liver Disease</a>
@@ -152,37 +158,36 @@ fieldset button
     <h5 style="text-align:center;">Please enter the patient details</h5>
     <form action="{{ url_for('predictdiabetes')}}" method="post" class="form-inline">
         <fieldset>
-            <div class="tabcontent" id="new">
-                 <div class="form-group">
-                    <label for="pregnancies">Number of Pregnancies</label>
-                    <input class="form-control" type="number" name="pregnancies" placeholder="eg. 0 for male" required="required"/>
-                 </div>
+            <div class="tabcontent" id="new" align-items="left">
+              <div class="form-group" >
+                <input class="form-control" type="hidden" name="pregnancies" value="0" required="required" />
+             </div>
                   <div class="form-group">
-                    <label for="glucose">Glucose Level (mg/dL)</label>
+                    <label for="glucose">Glucose Level (mg/dL)<i class="fa-solid fa-circle-info" title="Glucose Level 140 mg/dl"></i></label>
                     <input class="form-control" type="number" name="glucose" placeholder="eg. 80" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="bloodpressure">Blood Pressure (mmHg)</label>
+                    <label for="bloodpressure">Blood Pressure (mmHg)<i class="fa-solid fa-circle-info" title="Blood Pressure 120 mmHg"></i></label>
                     <input class="form-control" type="number" name="bloodpressure" placeholder="eg. 80" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="skinthickness">Skin Thickness (mm)</label>
+                    <label for="skinthickness">Skin Thickness (mm)<i class="fa-solid fa-circle-info" title="Skin Thickness >10mm"></i></label>
                      <input class="form-control" type="number" name="skinthickness" placeholder="eg. 20" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="insulin">Insulin Level (IU/mL) </label>
+                    <label for="insulin">Insulin Level (IU/mL)<i class="fa-solid fa-circle-info" title="Insulin Level 25 IU/ML"></i> </label>
                     <input class="form-control" type="number" name="insulin" placeholder="eg. 80" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="bmi">Body Mass Index (kg/m²)</label>
+                    <label for="bmi">Body Mass Index (kg/m²)<i class="fa-solid fa-circle-info" title="BMI"></i></label>
                     <input class="form-control" type="number" step="any" name="bmi" placeholder="eg. 23.1" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="dpf">Diabetes Pedigree Function</label>
+                    <label for="dpf">Diabetes Pedigree Function<i class="fa-solid fa-circle-info" title="Diabetes Pedigree Function "></i></label>
                     <input class="form-control" type="number" step="any" name="dpf" placeholder="eg. 0.52" required="required"/>
                   </div>
                   <div class="form-group">
-                    <label for="age">Patient Age in Years</label>
+                    <label for="age">Current Age of patient<i class="fa-solid fa-circle-info" title="Enter your Age"></i></label>
                     <input class="form-control" type="number" name="age" placeholder="eg. 34" required="required"/>
                   </div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary btn-lg">Predict</button>

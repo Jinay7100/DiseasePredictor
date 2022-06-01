@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://kit.fontawesome.com/c0dee1e206.js" crossorigin="anonymous"></script>
 	<title>Liver Disease Prediction</title>
 </head>
 <style>
@@ -110,29 +111,59 @@ fieldset button
 	box-shadow: 6px 13px 13px 0px black;
 	background-color: #ebfffa;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.bg {display:block;background-color:#ffffff;height:100px;text-align:center;padding-top:40px;padding-right :80px; }
+
+i
+{
+  padding-left: 10px;
+}
+.info {display:inline-block;padding: 0px 0px 0px 0px;color:#E83188;font-size:22px;border-radius:50%;border:solid 3px #E83188;width:20px;height:20px;font-weight:bold;text-align:center;}
 </style>
 <body>
 
 	<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#"><b>Disease Predictor</b></a>
+      <a class="navbar-brand" href="/dashboard"><b>Disease Predictor</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item ">
               <a class="nav-link" href="/dashboard">Get Started</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link disabled" href="/disblog">Disease Blog</a>
+              <a class="nav-link" href="/disblog">Disease Blog</a>
           </li>
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Diseases
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/diabetes">Diabetes</a>
+                <a class="dropdown-item" href="/diabetesMorF">Diabetes</a>
                 <a class="dropdown-item" href="/heart">Heart Disease</a>
                 
                 <a class="dropdown-item" href="/liver">Liver Disease</a>
@@ -152,45 +183,46 @@ fieldset button
     <h5 style="text-align:center;">Please enter the patient details</h5>
     <form action="{{ url_for('predictliver')}}" method="post" class="form-inline">
         <fieldset>
-          <div class="tabcontent" id="new">
+          <div class="tabcontent"  id="new">
             <div class="form-group">
-                <label for="Age">Age</label>
+                <label for="Age" align="left">Age<i class="fa-solid fa-circle-info" title="Enter your Age"></i></label>
+                
                 <input class="form-control" type="number" id="Age" name="Age" required="required" placeholder="Enter Age">
             </div>
               <div class="form-group">
-                <label for="Total Bilirubin">Total Bilirubin</label>
+                <label for="Total Bilirubin">Total Bilirubin<i class="fa-solid fa-circle-info" title="Total Bilirubin 1.2mg/dl"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Total Bilirubin" name="Total Bilirubin" required="required" placeholder="Enter the Total Bilirubin">
               </div>
               <div class="form-group">
-                <label for="Direct_Bilirubin">Direct Bilirubin</label>
+                <label for="Direct_Bilirubin" >Direct Bilirubin<i class="fa-solid fa-circle-info" title="Direct Bilirubin 0.3-1.0 mg/dl"></i></label>
                 <input class="form-control" type="number" step="0.1" step="any" id="Direct_Bilirubin" name="Direct_Bilirubin" required="required" placeholder="Enter the Direct_Bilirubin">
               </div>
               <div class="form-group">
-                <label for="Alkaline_Phosphotase">Alkaline Phosphotase</label>
+                <label for="Alkaline_Phosphotase" align="center" >Alkaline Phosphotase<i class="fa-solid fa-circle-info" title="Alkaline Phosphotase 44-147 IU/L"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Alkaline_Phosphotase" name="Alkaline_Phosphotase" required="required" placeholder="Enter the Alkaline Phosphotase">
               </div>
               <div class="form-group">
-                <label for="Alamine_Aminotransferase">Alamine Aminotransferase</label>
+                <label for="Alamine_Aminotransferase" align="center" >Alamine Aminotransferase<i class="fa-solid fa-circle-info" title="Alamine Aminotransferase 7-56 UI/L"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Alamine_Aminotransferase" name="Alamine_Aminotransferase" required="required" placeholder="Enter the Alamine Aminotransferase">
               </div>
               <div class="form-group">
-                <label for="Aspartate_Aminotransferase">Aspartate Aminotransferase</label>
+                <label for="Aspartate_Aminotransferase" align="center" >Aspartate Aminotransferase<i class="fa-solid fa-circle-info" title="Aspartate Aminotransferase 5-40 U/L"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Aspartate_Aminotransferase" name="Aspartate_Aminotransferase" required="required" placeholder="Enter the Aspartate Aminotransferase">
               </div>
               <div class="form-group">
-                <label for="Total_Protiens">Total Protiens</label>
+                <label for="Total_Protiens" align="center" >Total Protiens<i class="fa-solid fa-circle-info" title="Total Protiens 6.0-8.3 g/dl"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Total_Protiens" name="Total_Protiens" required="required" placeholder="Enter the Total Protiens">
               </div>
               <div class="form-group">
-                <label for="Albumin">Albumin</label>
+                <label for="Albumin" align="center">Albumin<i class="fa-solid fa-circle-info" title=" Albumin 3.5-5.5 g/dl"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Albumin" name="Albumin" required="required" placeholder="Enter the Albumin">
               </div>
               <div class="form-group">
-                <label for="Albumin_and_Globulin_Ratio">Albumin and Globulin Ratio</label>
+                <label for="Albumin_and_Globulin_Ratio" align="center">Albumin and Globulin Ratio<i class="fa-solid fa-circle-info" title="Albumin and Globulin Ratio 1.1-2.5"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Albumin_and_Globulin_Ratio" name="Albumin_and_Globulin_Ratio" required="required" placeholder="Enter the Albumin and Globulin Ratio">
               </div>
               <div class="form-group">
-                <label for="Gender">Gender</label>
+                <label for="Gender" align="center">Gender<i class="fa-solid fa-circle-info" title="Enter your gender"></i></label>
                 <input class="form-control" type="number" step="0.1" id="Gender" name="Gender" required="required" placeholder="If male enter 1 else 0">
               </div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary btn-lg">Predict</button>
